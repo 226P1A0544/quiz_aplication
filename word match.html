@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logic Game</title>
+    <style>
+        #answers {
+            display: none;
+        }
+    </style>
+<style type="text/css">
+  body {
+   
+   background-image:url('https://t4.ftcdn.net/jpg/04/25/74/29/360_F_425742955_QH2nJTiyl7N0YWzbCjQoH6fEGyNaiFrz.jpg') ;
+   
+    background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+  }
+</style>
+
+</head>
+<body>
+    <h1><font size="38" color="ash" face="medieval">Logic Game</font></h1>
+    <p>Try to solve these logic puzzles:</p>
+    
+    <form id="logicGameForm">
+        <p><strong>Puzzle 1:</strong>  What goes up but never comes down?</p>
+        <label for="puzzle1">Your answer:</label>
+        <input type="text" id="puzzle1" name="puzzle1"><br><br>
+
+        <p><strong>Puzzle 2:</strong> What has a head, a tail, and has no legs?</p>
+        <label for="puzzle2">Your answer:</label>
+        <input type="text" id="puzzle2" name="puzzle2"><br><br>
+
+        <p><strong>Puzzle 3:</strong> What has keys but can't open locks?</p>
+        <label for="puzzle3">Your answer:</label>
+        <input type="text" id="puzzle3" name="puzzle3"><br><br>
+
+        <p><strong>Puzzle 4:</strong> What comes once in a minute, twice in a moment, but never in a thousand years?</p>
+        <label for="puzzle4">Your answer:</label>
+        <input type="text" id="puzzle4" name="puzzle4"><br><br>
+
+        <p><strong>Puzzle 5:</strong>How many months have 28 days?</p>
+        <label for="puzzle5">Your answer:</label>
+        <input type="text" id="puzzle5" name="puzzle5"><br><br>
+
+        <input type="button" value="Submit" onclick="checkAnswers()">
+        <button id="retry" class="button hide">Retry</button>
+    
+    <div id="answer-buttons">
+  </div>
+    </form>
+
+    <div id="results"></div>
+    <div id="answers">
+        <h2>Correct Answers:</h2>
+        <p>Puzzle 1: Age</p>
+        <p>Puzzle 2: Coin</p>
+        <p>Puzzle 3: Piano</p>
+        <p>Puzzle 4: Letter 'M'</p>
+        <p>Puzzle 5: All 12 Months</p>
+    </div>
+
+    <script>
+        const answers = {
+            puzzle1: 'Age',
+            puzzle2: 'Coin',
+            puzzle3: 'Piano',
+            puzzle4: 'Letter M',
+            puzzle5: 'all 12 months'
+        };
+
+        function checkAnswers() {
+            const form = document.forms['logicGameForm'];
+            let correctCount = 0;
+            for (const [puzzle, answer] of Object.entries(answers)) {
+                if (form[puzzle].value.trim().toLowerCase() === answer.toLowerCase()) {
+                    correctCount++;
+                }
+            }
+            document.getElementById('results').innerHTML = `<p>You got ${correctCount} out of ${Object.keys(answers).length} correct!</p>`;
+            document.getElementById('answers').style.display = 'block';
+        }
+
+    </script>
+    <script src="logictimer.js"></script>
+</body>
+</html>
